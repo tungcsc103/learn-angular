@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AppUtilModule } from './app-util/app-util.module';
+import { FavoritesComponent } from './product/favorites/favorites.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

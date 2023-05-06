@@ -1,34 +1,29 @@
-import { Component, ElementRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Product } from '../product/product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
+import { ProductsService } from '../product/products.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
+  providers: [ProductsService]
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit{
   selectedProduct: Product | undefined;
-  products: Product[] = [
-    {
-      name: 'Webcam',
-      price: 100
-    },
-    {
-      name:  'Microphone',
-      price: 200
-    },
-    {
-      name: 'Keyboard',
-      price: 85
-    }
-  ];
+  products: Product[] = [];
   msg: string = '';
 
   @ViewChild("cardItems")
   cardItems!: ElementRef;
 
-  constructor(private vc: ViewContainerRef){}
+  // DI using constructor
+  constructor(private vc: ViewContainerRef, private productService: ProductsService){
+  }
+
+  ngOnInit(): void {
+     this.products = this.productService.getProducts();
+  }
 
   onBuyEvent() {
     window.alert(`You just bought ${this.selectedProduct?.name}!`);
