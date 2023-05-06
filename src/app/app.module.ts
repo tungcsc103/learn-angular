@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { AppUtilModule } from './app-util/app-util.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     ProductDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppUtilModule
   ],
   providers: [],
   bootstrap: [AppComponent],
