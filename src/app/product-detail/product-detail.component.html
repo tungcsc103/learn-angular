@@ -1,5 +1,15 @@
 <h2>Product Details</h2>
-<h3>{{name}}</h3>
-<span>{{productName}}</span> <br>
+<h3>{{product?.name | uppercase}}</h3>
+<ng-container [ngSwitch]="product?.name">
+  <p *ngSwitchCase="'Webcam'">
+    Product is used for video
+  </p>
+  <p *ngSwitchCase="'Microphone'">
+    Product is used for audio
+  </p>
+  <p *ngSwitchDefault>Product is for general use</p>
+</ng-container>
 
-<button (click)="buy()">Buy Now</button>
+<button (click)="buy()" *appPermission="['admin', 'agent']">Buy Now</button>
+
+<input appNumeric type="radio"/>
