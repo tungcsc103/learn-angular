@@ -5,6 +5,7 @@ import { SortPipe } from './sort.pipe';
 import { ProductHostDirective } from './product-host.directive';
 import { CopyrightDirective } from './copyright.directive';
 import { PermissionDirective } from './permission.directive';
+import { KeyLoggerComponent } from './key-logger/key-logger.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PermissionDirective } from './permission.directive';
     CopyrightDirective,
     NumericDirective,
     ProductHostDirective,
-    PermissionDirective
+    PermissionDirective,
+    KeyLoggerComponent
   ],
   imports: [
     CommonModule
@@ -23,7 +25,8 @@ import { PermissionDirective } from './permission.directive';
     CopyrightDirective,
     NumericDirective,
     ProductHostDirective,
-    PermissionDirective
+    PermissionDirective,
+    KeyLoggerComponent
   ]
 })
 export class AppUtilModule { }

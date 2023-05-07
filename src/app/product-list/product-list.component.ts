@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@ang
 import { Product } from '../product/product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { ProductsService } from '../product/products.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-product-list',
@@ -19,11 +21,24 @@ export class ProductListComponent implements OnInit{
 
   // DI using constructor
   constructor(private vc: ViewContainerRef, private productService: ProductsService){
+    this.title$.subscribe(this.setTitle);
   }
 
   ngOnInit(): void {
-     this.products = this.productService.getProducts();
+     this.productService.getProducts().subscribe(
+      product => this.products.push(product)
+     );
   }
+
+  private setTitle = () => {
+    this.msg = `Title ${Math.random()}`;
+  }
+
+  title$ = new Observable(observer => {
+    setInterval(() => {
+      observer.next();
+    }, 2000);
+  });
 
   onBuyEvent() {
     window.alert(`You just bought ${this.selectedProduct?.name}!`);
