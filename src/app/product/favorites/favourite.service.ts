@@ -3,15 +3,12 @@ import { ProductsService, } from '../products.service';
 import { Product } from '../product';
 import { Observable, of, map } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavouriteService extends ProductsService{
-
-  constructor() {
-    super()
-  }
 
   override getProducts(): Observable<Product> {
     let count: number = 0;
